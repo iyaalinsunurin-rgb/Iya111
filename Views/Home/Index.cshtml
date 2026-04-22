@@ -1,0 +1,80 @@
+﻿@model Graciel17.Models.PrismModel
+
+@{
+    ViewData["Title"] = "Prism Volume Calculator";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0 text-center">Corner Cut Prism Calculator</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Home" asp-action="Index" method="post">
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-secondary border-bottom">Main Dimensions</h5>
+                                <div class="mb-2">
+                                    <label class="form-label">Length (L)</label>
+                                    <input asp-for="MainLength" class="form-control" type="number" step="any" required />
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Width (W)</label>
+                                    <input asp-for="MainWidth" class="form-control" type="number" step="any" required />
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Height (H)</label>
+                                    <input asp-for="MainHeight" class="form-control" type="number" step="any" required />
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <h5 class="text-danger border-bottom">Cut Dimensions</h5>
+                                <div class="mb-2">
+                                    <label class="form-label">Cut Length</label>
+                                    <input asp-for="CutLength" class="form-control" type="number" step="any" required />
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Cut Width</label>
+                                    <input asp-for="CutWidth" class="form-control" type="number" step="any" required />
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Cut Height</label>
+                                    <input asp-for="CutHeight" class="form-control" type="number" step="any" required />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid mt-3">
+                            <button type="submit" class="btn btn-success btn-lg">Calculate Volume</button>
+                        </div>
+                    </form>
+
+                    <hr />
+
+                    <div class="row text-center bg-light p-3 rounded">
+                        <div class="col-4">
+                            <small class="text-muted">Main Vol</small>
+                            <p class="h5">@Model.MainVolume.ToString("F2")</p>
+                        </div>
+                        <div class="col-4 text-danger">
+                            <small>Cut Vol</small>
+                            <p class="h5">- @Model.CutVolume.ToString("F2")</p>
+                        </div>
+                        <div class="col-4 border-start border-primary">
+                            <small class="fw-bold">FINAL VOLUME</small>
+                            <p class="h4 text-primary fw-bold">@Model.FinalVolume.ToString("F2")</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer text-center small text-muted">
+                    Bataan Peninsula State University - Web Dev Project
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
